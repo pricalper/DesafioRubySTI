@@ -2,13 +2,15 @@ load 'aluno_finder.rb'
 
 class Aluno 
   attr_reader :matricula
+
+  CAMINHO_CSV = "/Users/priscilacaldas/desktop/alunos.csv"
   
   def initialize(matricula)
     @matricula = matricula
   end
 
   def to_s
-  	AlunoFinder.new("/Users/priscilacaldas/desktop/alunos.csv", @matricula).encontra_aluno
+  	AlunoFinder.new(CAMINHO_CSV, @matricula).encontra_aluno
   end
 
   def nome
@@ -31,7 +33,7 @@ class Aluno
 
   private
   def aluno_existe?
-  	aluno = AlunoFinder.new("/Users/priscilacaldas/desktop/alunos.csv", @matricula).encontra_aluno
+  	aluno = AlunoFinder.new(CAMINHO_CSV, @matricula).encontra_aluno
   	aluno.nil? ? false : true
   end
 end
